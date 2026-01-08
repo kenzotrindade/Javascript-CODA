@@ -112,10 +112,10 @@ while (index < listeEleves.length) {
   for (i = 0; i < listeEleves.length; i++) {
     // On parcours les élèves
     moyenne = (listeEleves[i].noteMaths + listeEleves[i].noteFrancais) / 2; // On calcule les moyennes une par une
-    if (moyenne >= 10) {
-      // Si cette moyenne est supérieur ou égale à 10, le compteur augmente de 1 pour compter le nombre d'élèves admis
-      compteur++;
-    }
+  }
+  if (moyenne >= 10) {
+    // Si cette moyenne est supérieur ou égale à 10, le compteur augmente de 1 pour compter le nombre d'élèves admis
+    compteur++;
   }
   index++; // On avance dans l'index pour ne pas boucler à l'infini
 }
@@ -132,7 +132,7 @@ for (i = 0; i < listeEleves.length; i++) {
   console.log(totalMoyenne);
 }
 
-console.log("La moyenne de la classe est de : " + totalMoyenne / 3); // On divise cette moyenne par le nombre de notes pour avoir la moyenne de classe
+console.log("La moyenne de la classe est de : " + totalMoyenne / i); // On divise cette moyenne par le nombre de notes pour avoir la moyenne de classe
 
 // Bonus 2
 console.log("==========Bonus 2==========");
