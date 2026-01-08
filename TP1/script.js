@@ -166,5 +166,5 @@ for (i = 0; i < listeEleves.length; i++) {
 
 if (compteurAdmis === listeEleves.length) {
   // Si le nombre d'élèves admis est égal au nombre d'élèves dans ce cas, tout le monde est admis Félicitation !
-  console.log("Félicitation, tout les élèves sont admis !");
+  console.log("Félicitation, tout les élèves sont admis !"); 
 }
