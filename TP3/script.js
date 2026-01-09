@@ -190,7 +190,7 @@ for (let i = 0; i < listeEleves.length; i++) {
   temp = listeEleves[i];
   listeEleves[i] = listeEleves[min];
   listeEleves[min] = temp;
-  compteurChange++; // On incrémente le nombre de permutations de places
+  compteurChange++; // On incrémente le nombre de permutations de places 
 }
 
 for (let i = 0; i < listeEleves.length; i++) {
