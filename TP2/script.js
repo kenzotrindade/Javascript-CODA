@@ -76,7 +76,6 @@ console.log(
 // ===============================
 console.log("==========Partie 3==========");
 // On échange la première note [0] avec la plus petite trouvée [indexMin]
-// Utilisation de la décomposition (destructuring) pour l'échange
 [notes[0], notes[indexMin]] = [notes[indexMin], notes[0]];
 
 console.log("Le tableau après tri est : " + notes);
@@ -94,7 +93,7 @@ for (let i = 0; i < taille; i++) {
       min = j;
     }
   }
-  // Échange classique avec la variable temp
+  // Échange classique avec la variable temporaire
   temp = notes[i];
   notes[i] = notes[min];
   notes[min] = temp;
@@ -117,12 +116,12 @@ console.log("==========Bonus 1==========");
 let compteurVerif = 0;
 let compteurChange = 0;
 
-// Tri du tableau "tab" avec suivi des statistiques
+// Tri du tableau "tab"
 for (let i = 0; i < taille; i++) {
   console.log(tab);
   let min = i;
   for (let j = i + 1; j < taille; j++) {
-    if (tab[j] < tab[min]) {
+    if (tab[j] < tab[min]) { // Si l'index parcouru est plus petit que le minimum, le minimum devient l'index parcouru
       min = j;
     }
     compteurVerif++; // On compte chaque comparaison
@@ -138,7 +137,7 @@ for (let i = 0; i < taille; i++) {
 // Bonus - 2
 // ===============================
 console.log("==========Bonus 2==========");
-// Affichage des compteurs de performance du tri croissant
+// Affichage des compteurs & du tri croissant
 console.log("Nombre de vérificaations : " + compteurVerif);
 console.log("Nombre d'échanges : " + compteurChange);
 
