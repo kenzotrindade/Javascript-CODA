@@ -1,6 +1,6 @@
-//////////////////////// Code fourni (ne pas moidifier) ////////////////////////
+//////////////////////// Code fourni (ne pas modifier) ////////////////////////
 
-// Définir la taille du tableau de notes au hasard entre 15 et 30 éléments
+// Définir la taille du tableau de notes au hasard entre 7 et 10 éléments
 let taille_minimum = 7;
 let taille_maximum = 10;
 let taille =
@@ -9,14 +9,14 @@ let taille =
 
 // Déclarer le tableau pour stocker les notes
 let notes = [];
-// Définir la note maximale (pas besoin de définir la note minimale car elle est 0 par défaut)
+// Définir la note maximale
 let note_maximum = 20;
 
-// Itérer autant de fois qu'on a de notes aléatoires à générer
+// Boucle pour remplir le tableau avec des notes aléatoires
 for (let i = 0; i < taille; i++) {
-  // Générer une note aléatoire entre 0 et note_maximum (inclus)
+  // Générer une note aléatoire entre 0 et 20
   let note = Math.floor(Math.random() * (note_maximum + 1));
-  // Ajouter la note générée au tableau
+  // Ajouter la note à la fin du tableau
   notes.push(note);
 }
 
@@ -28,24 +28,27 @@ for (let i = 0; i < taille; i++) {
 console.log("==========Partie 1==========");
 console.log("Taille du tableau : " + taille);
 
+// Création d'une copie du tableau original pour la conserver avant le tri
 let tab = [];
 for (let i = 0; i < taille; i++) {
   tab.push(notes[i]);
 }
 console.log("Le tableau est : " + tab);
 
-let vmin = notes[0];
+// Recherche de la plus petite valeur (vmin)
+let vmin = notes[0]; // On commence par la première note
 for (let i = 0; i < taille; i++) {
   if (notes[i] < vmin) {
-    vmin = notes[i];
+    vmin = notes[i]; // Met à jour si une note plus petite est trouvée
   }
 }
 console.log("La note minimum du tableau est : " + vmin);
 
+// Recherche de la plus grande valeur (vmax)
 let vmax = notes[0];
 for (let i = 0; i < taille; i++) {
   if (notes[i] > vmax) {
-    vmax = notes[i];
+    vmax = notes[i]; // Met à jour si une note plus grande est trouvée
   }
 }
 console.log("La note maximum du tableau est : " + vmax);
@@ -54,6 +57,7 @@ console.log("La note maximum du tableau est : " + vmax);
 // Partie 2 – Première étape du tri
 // ===============================
 console.log("==========Partie 2==========");
+// Recherche du minimum global et de sa position (index)
 let min = notes[0];
 let indexMin = 0;
 for (let i = 0; i < taille; i++) {
@@ -71,6 +75,8 @@ console.log(
 // Partie 3 – Échange de valeurs
 // ===============================
 console.log("==========Partie 3==========");
+// On échange la première note [0] avec la plus petite trouvée [indexMin]
+// Utilisation de la décomposition (destructuring) pour l'échange
 [notes[0], notes[indexMin]] = [notes[indexMin], notes[0]];
 
 console.log("Le tableau après tri est : " + notes);
@@ -79,14 +85,16 @@ console.log("Le tableau après tri est : " + notes);
 // Partie 4 – Tri par sélection complet
 // ===============================
 console.log("==========Partie 4==========");
-let temp = 0;
+let temp = 0; // Variable temporaire pour l'échange de valeurs
 for (let i = 0; i < taille; i++) {
-  let min = i;
+  let min = i; // On suppose que l'élément i est le plus petit
+  // On cherche le vrai minimum dans le reste du tableau
   for (let j = i + 1; j < taille; j++) {
     if (notes[j] < notes[min]) {
       min = j;
     }
   }
+  // Échange classique avec la variable temp
   temp = notes[i];
   notes[i] = notes[min];
   notes[min] = temp;
@@ -109,6 +117,7 @@ console.log("==========Bonus 1==========");
 let compteurVerif = 0;
 let compteurChange = 0;
 
+// Tri du tableau "tab" avec suivi des statistiques
 for (let i = 0; i < taille; i++) {
   console.log(tab);
   let min = i;
@@ -116,8 +125,9 @@ for (let i = 0; i < taille; i++) {
     if (tab[j] < tab[min]) {
       min = j;
     }
-    compteurVerif++;
+    compteurVerif++; // On compte chaque comparaison
   }
+  // Échange et incrémentation du compteur d'échanges
   temp = tab[i];
   tab[i] = tab[min];
   tab[min] = temp;
@@ -128,7 +138,7 @@ for (let i = 0; i < taille; i++) {
 // Bonus - 2
 // ===============================
 console.log("==========Bonus 2==========");
-
+// Affichage des compteurs de performance du tri croissant
 console.log("Nombre de vérificaations : " + compteurVerif);
 console.log("Nombre d'échanges : " + compteurChange);
 
@@ -137,12 +147,14 @@ console.log("Nombre d'échanges : " + compteurChange);
 // ===============================
 console.log("==========Bonus 3==========");
 
+// Tri par sélection en ordre décroissant (du plus grand au plus petit)
 let max = tab[0];
 for (let i = 0; i < taille; i++) {
   console.log(tab);
   let max = i;
   for (let j = i + 1; j < taille; j++) {
     if (tab[j] > tab[max]) {
+      // On cherche la valeur supérieure
       max = j;
       compteurVerif++;
     }
