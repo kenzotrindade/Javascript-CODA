@@ -28,7 +28,7 @@ for (let i = 0; i < taille; i++) {
 console.log("==========Partie 1==========");
 console.log("Taille du tableau : " + taille);
 
-// Création d'une copie du tableau original pour la conserver avant le tri 
+// Création d'une copie du tableau original pour la conserver avant le tri  
 let tab = [];
 for (let i = 0; i < taille; i++) {
   tab.push(notes[i]);
