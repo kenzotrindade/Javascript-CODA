@@ -158,7 +158,7 @@ function triParSelection(tableau) {
     swap(tableau, i, min);
     compteurChange++; // On incrémente le nombre de permutations de places
   }
-  return tableau;
+  return tableau; 
 }
 
 // ===============================
