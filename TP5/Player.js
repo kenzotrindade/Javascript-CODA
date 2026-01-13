@@ -149,7 +149,7 @@ function gameloop() {
     p1.isWalking = false;
   }
 
-  p1.Animation();
+  p1.Animation(); 
   p1.draw(ctx);
   requestAnimationFrame(gameloop);
 }
