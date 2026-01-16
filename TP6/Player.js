@@ -57,8 +57,6 @@ class Player {
   }
 
   Animation() {
-    this.frameWidth = 64;
-    this.frameHeight = 64;
     if (this.isWalking) {
       this.currentColumn = this.walkSpriteIndex;
       this.currentWalkSriteStep++;
@@ -70,8 +68,6 @@ class Player {
         this.walkSpriteIndex = 0;
       }
     } else if (this.isAttacking) {
-      this.frameWidth = 128;
-      this.frameHeight = 128;
       this.currentColumn = this.attackSpriteIndex;
       this.currentAttackSriteStep++;
       if (this.currentAttackSriteStep >= this.attackSpriteDuration) {
@@ -81,8 +77,6 @@ class Player {
       if (this.attackSpriteIndex >= this.attackSpriteNumber) {
         this.attackSpriteIndex = 0;
         this.isAttacking = false;
-        this.frameWidth = 64;
-        this.frameHeight = 64;
       }
     } else if (this.isDying) {
       this.currentColumn = this.dieSpriteIndex;
@@ -105,11 +99,6 @@ class Player {
   draw(ctx) {
     if (!this.skin) {
       return;
-    }
-
-    if (this.isAttacking) {
-      drawX -= 32;
-      drawY -= 32;
     }
 
     ctx.drawImage(
@@ -156,19 +145,22 @@ function gameloop() {
     p1.isAttacking = true;
     p1.attackSpriteIndex = 0;
     p1.currentRow = 14;
-  } else if (keys.ShiftRight) {
-    p1.currentRow = 20;
-    p1.isDying = true;
   } else {
     p1.isWalking = false;
   }
 
-  p1.Animation();
+  p1.Animation(); 
   p1.draw(ctx);
   requestAnimationFrame(gameloop);
 }
 
 gameloop();
+
+document.getElementById("killBtn").addEventListener("click", () => {
+  p1.isDying = true;
+  p1.dieSpriteIndex = 0;
+  p1.currentRow = 12;
+});
 
 // p1.isDying = true;
 
