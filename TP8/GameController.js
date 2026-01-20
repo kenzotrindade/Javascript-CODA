@@ -14,7 +14,7 @@ class GameController {
     this.gameData = new Game();
 
     this.name = localStorage.getItem("pseudo");
-    this.serverUrl = "ws://localhost:8000/ws";
+    this.serverUrl = localStorage.getItem("serverUrl");
     this.spritePath = localStorage.getItem("skinPath");
 
     this.inputState = {

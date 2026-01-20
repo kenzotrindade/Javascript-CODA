@@ -26,9 +26,6 @@ const pseudoInput = document.querySelector(".pseudo");
 const serverUrlInput = document.querySelector(".serverUrl");
 const joinBtn = document.querySelector('button[type="submit"]');
 const form = document.querySelector('form[action=""]');
-export const pseudo = pseudoInput.value;
-export const serverUrl = serverUrlInput.value;
-export const skinPath = skinInput.value;
 
 joinBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -39,9 +36,12 @@ joinBtn.addEventListener("click", (e) => {
   }
   const skinInput = document.querySelector('input[name="skin"]:checked');
   if (pseudoInput.value && serverUrlInput.value && skinInput.value) {
+    const pseudo = pseudoInput.value;
+    const serverUrl = serverUrlInput.value;
+    const skinPath = skinInput.value;
     localStorage.setItem("pseudo", pseudo);
     localStorage.setItem("serverUrl", serverUrl);
-    localStorage.setItem("skinPath", skinPath);
+    localStorage.setItem("skinPath", "../" + skinPath);
 
     console.log("Données stockées : ", { pseudo, serverUrl, skinPath });
     window.location.href = "game.html";
