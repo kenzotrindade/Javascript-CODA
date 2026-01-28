@@ -9,11 +9,6 @@ export default class GameView {
     this.height = this.canvas.height;
   }
 
-  clear() {
-    // Clear all of the drawing of the page, between the dimensions of window
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  }
-
   drawBackground() {
     // Define the dimension of canvas window
 

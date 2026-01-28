@@ -37,8 +37,6 @@ export default class GameController {
   initSocket() {
     // Open Listener with Server & Send Data to it
     this.socket.onopen = () => {
-      console.log("Connected");
-
       this.socket.send(
         JSON.stringify({
           name: this.name,
@@ -49,7 +47,6 @@ export default class GameController {
 
     // Take Data's server if he send a message
     this.socket.onmessage = (event) => {
-      console.log("Server Send a message !");
       const newMessage = JSON.parse(event.data);
       this.gameData.update(newMessage);
       this.gameData.lastTick = performance.now();
@@ -70,9 +67,6 @@ export default class GameController {
       } else if (e.key === " ") {
         this.inputState.attack = true;
       }
-
-      // [DEBUG] -> Print all keys are pressed
-      console.log("Keydown : ", this.inputState);
     });
 
     window.addEventListener("keyup", (e) => {
@@ -87,9 +81,6 @@ export default class GameController {
       } else if (e.key === " ") {
         this.inputState.attack = false;
       }
-
-      // [DEBUG] -> Print all keys are unpressed
-      console.log("Keyup : ", this.inputState);
     });
   }
 
