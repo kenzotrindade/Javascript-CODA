@@ -1,18 +1,22 @@
-export class GameController {
-  constructor(game, vue) {
-    // Server Network Stats
+class GameController {
+  constructor() {
+    // Server sends updates at 20 ticks per second
     this.SERVER_TICK_RATE = 20;
+    // Duration between two server ticks in milliseconds
     this.SERVER_INTERVAL = 1000 / this.SERVER_TICK_RATE;
 
-    this.gameData = game;
-    this.gameView = vue;
+    // Permanently bind "this" at the instance of the GameController class
+    this.loop = this.loop.bind(this);
 
-    // Take the localstorage Data's
+    // Regulates framerate to keep 60fps
+    requestAnimationFrame(this.loop);
+
+    this.gameData = new Game();
+
     this.name = localStorage.getItem("pseudo");
-    this.serverUrl = localStorage.getItem("serverUrl");
+    this.serverUrl = "ws://localhost:8000/ws";
     this.spritePath = localStorage.getItem("skinPath");
 
-    // Key Logger and Sender for Server
     this.inputState = {
       up: false,
       down: false,
@@ -21,21 +25,14 @@ export class GameController {
       attack: false,
     };
 
-    // Launch Server Listener
     this.socket = new WebSocket(this.serverUrl);
+
     this.initInput();
     this.initSocket();
     this.startInputSender();
-
-    // Take Now Server Tick
-    this.lastTick = performance.now();
-    // Launch Game Loop
-    this.loop = this.loop.bind(this);
-    requestAnimationFrame(this.loop);
   }
 
   initSocket() {
-    // Open Listener with Server & Send Data to it
     this.socket.onopen = () => {
       console.log("Connected");
 
@@ -47,17 +44,14 @@ export class GameController {
       );
     };
 
-    // Take Data's server if he send a message
     this.socket.onmessage = (event) => {
       console.log("Server Send a message !");
       const newMessage = JSON.parse(event.data);
       this.gameData.update(newMessage);
-      this.gameData.lastTick = performance.now();
     };
   }
 
   initInput() {
-    // Key Logger for Key Object -> send to server
     window.addEventListener("keydown", (e) => {
       if (e.key === "z") {
         this.inputState.up = true;
@@ -71,7 +65,6 @@ export class GameController {
         this.inputState.attack = true;
       }
 
-      // [DEBUG] -> Print all keys are pressed
       console.log("Keydown : ", this.inputState);
     });
 
@@ -88,16 +81,13 @@ export class GameController {
         this.inputState.attack = false;
       }
 
-      // [DEBUG] -> Print all keys are unpressed
       console.log("Keyup : ", this.inputState);
     });
   }
 
   startInputSender() {
     setInterval(() => {
-      // If server is Ready and Reachable
       if (this.socket.readyState === WebSocket.OPEN) {
-        // Send Data's to server (encrypt on JSON stringify)
         this.socket.send(
           JSON.stringify({
             type: "input",
@@ -107,23 +97,16 @@ export class GameController {
       } else {
         return;
       }
-      // Send this to server every "SERVER_INTERVAL" -> 20ms
     }, this.SERVER_INTERVAL);
   }
 
+  // === Main render loop ===
   loop(timestamp) {
-    // Loop the Game
-    let now = performance.now();
-    // Take the time between the last message of the server & take it
-    let alpha = (now - this.lastTick) / this.SERVER_INTERVAL;
-
-    for (let id in this.gameData.players) {
-      // Interpolate all of player's of frontend
-      this.gameData.players[id].interpolate(alpha);
-    }
-
-    // Start RENDER and LOOP for launch game
-    this.gameView.render();
+    // Request the next frame
     requestAnimationFrame(this.loop);
   }
 }
+
+// === Start the game controller by instantiating the GameController class ===
+// This line will execute the constructor (e.g, launch the frontend)
+new GameController();

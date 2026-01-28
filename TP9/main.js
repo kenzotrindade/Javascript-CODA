@@ -1,10 +1,9 @@
-import { Player } from "./Models/Player.js";
 import { Game } from "./Models/Game.js";
 import { GameView } from "./Vue/GameView.js";
 import { GameController } from "./Controllers/GameController.js";
 
-const model = new Game();
+const game = new Game();
 
-const vue = new GameView();
+const vue = new GameView(game);
 
-const controller = new GameController();
+const controller = new GameController(game, vue);
