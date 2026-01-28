@@ -1,4 +1,4 @@
-export class GameView {
+export default class GameView {
   constructor(game) {
     // Take canvas on HTML and let Context
     this.canvas = document.querySelector("canvas");

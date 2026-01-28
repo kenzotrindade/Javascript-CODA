@@ -1,4 +1,4 @@
-export class GameController {
+export default class GameController {
   constructor(game, vue) {
     // Server Network Stats
     this.SERVER_TICK_RATE = 20;

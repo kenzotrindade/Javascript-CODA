@@ -1,4 +1,4 @@
-export class Player {
+export default class Player {
   constructor(id, pseudo, skinPath, position) {
     // Player's DATAs
     this.id = id;
