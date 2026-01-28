@@ -1,4 +1,6 @@
-class Game {
+import { Player } from "./Player.js";
+
+export class Game {
   constructor() {
     this.isRunning = false;
     this.isOver = false;
@@ -7,29 +9,34 @@ class Game {
   }
 
   update(gameStateFromServer) {
+    // Update MetaData if server change it
     for (let key in gameStateFromServer) {
       if (key !== "players") {
         this[key] = gameStateFromServer[key];
       }
-      if (key === "players") {
-        for (let id in gameStateFromServer.players) {
-          if (id in this.players) {
-            for (let value in gameStateFromServer.players[id]) {
-              this.players[id][value] = gameStateFromServer.players[id][value];
-            }
-          } else {
-            this.players[id] = new Player(
-              gameStateFromServer[id],
-              gameStateFromServer.players[id].name,
-              gameStateFromServer.players[id].skinPath,
-              gameStateFromServer.players[id].position,
-            );
-          }
-          for (let id in this.players) {
-            if (!(id in gameStateFromServer.players)) {
-              delete this.players[id];
-            }
-          }
+    }
+
+    // Create player if he does'nt exist for server
+    if (gameStateFromServer.players) {
+      for (let id in gameStateFromServer.players) {
+        const data = gameStateFromServer.players[id];
+
+        if (this.players[id]) {
+          this.players[id].update(data);
+        } else {
+          this.players[id] = new Player(
+            id,
+            data.name,
+            data.skinPath,
+            data.position,
+          );
+        }
+      }
+
+      // Delete player if he does'nt exist for server
+      for (let id in this.players) {
+        if (!(id in gameStateFromServer.players)) {
+          delete this.players[id];
         }
       }
     }

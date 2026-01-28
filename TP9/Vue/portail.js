@@ -41,7 +41,7 @@ joinBtn.addEventListener("click", (e) => {
     const skinPath = skinInput.value;
     localStorage.setItem("pseudo", pseudo);
     localStorage.setItem("serverUrl", serverUrl);
-    localStorage.setItem("skinPath", "../" + skinPath);
+    localStorage.setItem("skinPath", skinPath);
 
     console.log("Données stockées : ", { pseudo, serverUrl, skinPath });
     window.location.href = "game.html";
