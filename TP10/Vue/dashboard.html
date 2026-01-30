@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arena Dashboard - Stats & Leaderboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="sync-indicator"></div>
+    <div class="container">
+      <header class="main-header">
+        <h1>ARENA <span class="highlight">DASHBOARD</span></h1>
+        <nav><a href="portail.html" class="btn-back">RETOUR</a></nav>
+      </header>
+
+      <form id="config-form" class="card server-config">
+        <label for="server-ip">Connexion au champ de bataille (IP:PORT)</label>
+        <div class="input-group">
+          <input type="text" id="server-ip" value="13.38.137.68:8000" />
+          <button type="submit" id="refresh-btn">ACTUALISER</button>
+        </div>
+      </form>
+
+      <main class="dashboard-grid">
+        <section class="card profile-stats">
+          <header>
+            <h2>DÉTAILS JOUEUR</h2>
+            <select id="player-selector">
+              <option value="">-- Choisir un guerrier --</option>
+            </select>
+          </header>
+
+          <div class="grid-stats">
+            <article class="stat-item">
+              <p class="label">Joueur</p>
+              <p class="value" id="stat-name">-</p>
+            </article>
+            <article class="stat-item">
+              <p class="label">Nombre de Kills</p>
+              <p class="value" id="my-kills">0</p>
+            </article>
+            <article class="stat-item">
+              <p class="label">Nombre de Morts</p>
+              <p class="value" id="my-deaths">0</p>
+            </article>
+            <article class="stat-item">
+              <p class="label">Ratio K/D</p>
+              <p class="value" id="my-kd">0.00</p>
+            </article>
+            <article class="stat-item">
+              <p class="label">Dernière partie (Rang)</p>
+              <p class="value" id="my-rank">#0</p>
+            </article>
+            <article class="stat-item">
+              <p class="label">Classement moyen</p>
+              <p class="value" id="avg-rank">#0</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card leaderboard">
+          <header><h2>CLASSEMENT GÉNÉRAL</h2></header>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Joueur</th>
+                  <th class="sortable" id="gamesPlayed">Games</th>
+                  <th class="sortable active" id="totalKills">Kills</th>
+                  <th class="sortable" id="totalDeaths">Deaths</th>
+                  <th class="sortable" id="kdRatio">K/D</th>
+                  <th class="sortable" id="overallRanking">Average Rank</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                <tr>
+                  <td colspan="7" class="loading">Initialisation...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
