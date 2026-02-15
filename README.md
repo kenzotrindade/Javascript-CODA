@@ -1,55 +1,54 @@
-<!-- PROJECT LOGO -->
-<p align="center">
-  <img src="https://img.shields.io/badge/Javascript-CODA-blue?style=for-the-badge&logo=javascript&logoColor=white" alt="Logo">
+<div align="center">
+
+# 🚀 Javascript‑CODA (JavaScript Learning)
+
+![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Browser](https://img.shields.io/badge/Platform-Browser-blue?style=for-the-badge&logo=google-chrome&logoColor=white)
+![School](https://img.shields.io/badge/School-Coda-blue?style=for-the-badge)
+
+<p>
+  <strong>A collection of JavaScript exercises and small projects for practice.</strong><br>
+  Learn DOM manipulation, functions, arrays, events, and basic scripting.
 </p>
 
-<!-- BADGES -->
-<p align="center">
-  <a href="https://github.com/kenzotrindade/Javascript-CODA/stargazers">
-    <img src="https://img.shields.io/github/stars/kenzotrindade/Javascript-CODA?style=flat-square&logo=github&label=Stars" alt="GitHub Stars">
-  </a>
-  <a href="https://github.com/kenzotrindade/Javascript-CODA/network/members">
-    <img src="https://img.shields.io/github/forks/kenzotrindade/Javascript-CODA?style=flat-square&logo=github&label=Forks" alt="GitHub Forks">
-  </a>
-  <a href="https://github.com/kenzotrindade/Javascript-CODA/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/kenzotrindade/Javascript-CODA?style=flat-square" alt="License">
-  </a>
-  <a href="https://github.com/kenzotrindade/Javascript-CODA/commits/main">
-    <img src="https://img.shields.io/github/commit-activity/m/kenzotrindade/Javascript-CODA?style=flat-square" alt="Commit Activity">
-  </a>
-</p>
+</div>
 
-# Javascript-CODA
+---
 
-## 🔍 About
+## 📋 About The Project
 
-Javascript-CODA is a **collection of JavaScript exercises and practice tasks**.  
-This repository is designed to help learners build and improve their JavaScript skills step by step.  
-You will find simple tasks, example code, and small projects to explore core JavaScript concepts.
+This repository contains **JavaScript exercises** and practice tasks designed to help learners **improve their coding skills step by step**.  
+Unlike higher-level frameworks, this project focuses on **core JavaScript concepts** and understanding how scripts interact with the browser.
 
-## 🧠 What You Can Learn
+> **Specific Goal:** Provide clear, beginner-friendly exercises to practice JavaScript fundamentals, DOM manipulation, and small interactive projects.
 
-This repository covers:
+---
 
-- Basic JavaScript syntax (variables, functions)
-- DOM manipulation
-- Event handling
-- Arrays and loops
-- Practice exercises to test your skills
+## ⚙️ Key Concepts Mastered
 
-Each file or folder contains a set of practice code you can open, run, and change.
+This project demonstrates practical knowledge of:
+
+* **🧠 JavaScript Basics:** Variables, functions, loops, conditionals, and operators.
+* **👉 DOM Manipulation:** Selecting elements, changing content, styling, and handling events.
+* **🏗️ Arrays & Objects:** Organizing and managing structured data.
+* **🔧 Event Handling:** Responding to user interactions like clicks, input, and form submissions.
+* **💡 Problem Solving:** Solving small tasks and mini-projects to improve coding skills.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Usage |
+| :--- | :--- |
+| **JavaScript (ES6+)** | Core logic and scripting. |
+| **HTML / CSS** | Structure and styling for interactive pages. |
+| **Browser (Chrome, Firefox, Edge)** | Running and testing code. |
+| **VS Code / Sublime** | Code editing and project management. |
+
+---
 
 ## 🚀 Getting Started
 
-### 🔧 Requirements
-
-Before running the code you need:
-
-- A modern web browser (Chrome, Firefox, Edge)
-- A code editor (VS Code, Sublime, Atom)
-
-### 📌 How to Clone
-
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/kenzotrindade/Javascript-CODA.git
+```bash
+git clone https://github.com/kenzotrindade/Javascript-CODA.git
